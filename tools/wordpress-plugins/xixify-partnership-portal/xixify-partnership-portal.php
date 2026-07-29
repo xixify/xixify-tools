@@ -40,7 +40,7 @@ add_action('wp_enqueue_scripts', 'xixify_portal_enqueue_frontend_assets');
 Xixify_Partnership_Admin::init();
 Xixify_Partnership_Shortcode::init();
 
-// Initialize Automated GitHub Updater (Configured for Sumayah-Islam-tuly)
+// Initialize Automated GitHub Updater (Configured for xixify/xixify-tools)
 if (is_admin()) {
-    new Xixify_Partnership_Updater(__FILE__, 'Sumayah-Islam-tuly', 'xixify-tools');
+    new Xixify_Partnership_Updater(__FILE__, 'xixify', 'xixify-tools');
 }
