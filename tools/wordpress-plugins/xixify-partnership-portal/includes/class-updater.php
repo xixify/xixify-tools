@@ -60,9 +60,9 @@ class Xixify_Partnership_Updater {
                 $version = str_replace('v', '', $this->github_response['tag_name']);
 
                 if (version_compare($plugin_data['Version'], $version, '<')) {
-                    $package = $this->github_response['zipball_url'];
+                    $package = '';
 
-                    // Check if a compiled release zip asset is attached
+                    // Prioritize compiled release zip asset
                     if (!empty($this->github_response['assets'])) {
                         foreach ($this->github_response['assets'] as $asset) {
                             if (substr($asset['name'], -4) === '.zip') {
@@ -70,6 +70,10 @@ class Xixify_Partnership_Updater {
                                 break;
                             }
                         }
+                    }
+
+                    if (empty($package)) {
+                        $package = $this->github_response['zipball_url'];
                     }
 
                     $obj = new stdClass();
@@ -111,7 +115,17 @@ class Xixify_Partnership_Updater {
                     'description' => $plugin_data['Description'],
                     'changelog' => $this->github_response['body']
                 );
-                $plugin->download_link = $this->github_response['zipball_url'];
+
+                $download_link = '';
+                if (!empty($this->github_response['assets'])) {
+                    foreach ($this->github_response['assets'] as $asset) {
+                        if (substr($asset['name'], -4) === '.zip') {
+                            $download_link = $asset['browser_download_url'];
+                            break;
+                        }
+                    }
+                }
+                $plugin->download_link = !empty($download_link) ? $download_link : $this->github_response['zipball_url'];
 
                 return $plugin;
             }
@@ -121,12 +135,19 @@ class Xixify_Partnership_Updater {
 
     public function after_install($response, $hook_extra, $result) {
         global $wp_filesystem;
-        $install_directory = plugin_dir_path($this->file);
-        $wp_filesystem->move($result['destination'], $install_directory);
-        $result['destination'] = $install_directory;
 
-        if ($this->active) {
-            activate_plugin($this->plugin);
+        if (isset($hook_extra['plugin']) && $hook_extra['plugin'] === $this->plugin) {
+            $this->active = is_plugin_active($this->plugin);
+            $destination = WP_PLUGIN_DIR . '/' . $this->basename;
+
+            if ($result['destination'] !== $destination && $wp_filesystem->exists($result['destination'])) {
+                $wp_filesystem->move($result['destination'], $destination);
+                $result['destination'] = $destination;
+            }
+
+            if ($this->active) {
+                activate_plugin($this->plugin);
+            }
         }
         return $result;
     }
