@@ -1,0 +1,101 @@
+:root {
+  --xixify-primary: #4F46E5;
+  --xixify-primary-hover: #4338CA;
+  --xixify-bg: #F9FAFB;
+  --xixify-card-bg: #FFFFFF;
+  --xixify-text: #1F2937;
+  --xixify-border: #E5E7EB;
+  --xixify-radius: 8px;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background-color: var(--xixify-bg);
+  color: var(--xixify-text);
+  margin: 0;
+  padding: 20px;
+}
+
+.xixify-tool-container {
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.tool-header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.tool-header h1 {
+  font-size: 24px;
+  margin: 0 0 8px 0;
+  color: var(--xixify-primary);
+}
+
+.tool-card {
+  background: var(--xixify-card-bg);
+  border: 1px solid var(--xixify-border);
+  border-radius: var(--xixify-radius);
+  padding: 24px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.form-group {
+  margin-bottom: 16px;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+textarea {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px;
+  border: 1px solid var(--xixify-border);
+  border-radius: var(--xixify-radius);
+  font-size: 14px;
+  resize: vertical;
+}
+
+.btn-primary {
+  background-color: var(--xixify-primary);
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: var(--xixify-radius);
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.btn-primary:hover {
+  background-color: var(--xixify-primary-hover);
+}
+
+.output-group {
+  margin-top: 24px;
+  padding-top: 16px;
+  border-top: 1px solid var(--xixify-border);
+}
+
+.result-box {
+  background: #F3F4F6;
+  padding: 12px;
+  border-radius: var(--xixify-radius);
+  font-family: monospace;
+}
+
+.hidden {
+  display: none;
+}
+
+.tool-footer {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 12px;
+  color: #6B7280;
+}

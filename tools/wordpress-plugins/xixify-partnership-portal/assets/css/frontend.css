@@ -1,0 +1,244 @@
+/* Minimalist Front-End Portal Stylesheet for [xixify_partnership_portal] */
+
+.xixify-portal-wrapper {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background: #090A0F;
+  color: #F3F4F6;
+  border: 1px solid #232738;
+  border-radius: 12px;
+  padding: 28px;
+  margin: 24px 0;
+  box-shadow: 0 10px 25px -5px rgba(0,0,0,0.5);
+}
+
+.xixify-portal-header {
+  margin-bottom: 24px;
+}
+
+.portal-brand-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #FFFFFF;
+  letter-spacing: -0.02em;
+}
+
+.xixify-portal-header p {
+  color: #9CA3AF;
+  font-size: 14px;
+  margin-top: 4px;
+}
+
+.xixify-portal-alert.alert-success {
+  background: rgba(16, 185, 129, 0.15);
+  border: 1px solid #10B981;
+  color: #34D399;
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+.xixify-portal-tabs {
+  display: flex;
+  gap: 8px;
+  border-bottom: 1px solid #232738;
+  padding-bottom: 12px;
+  margin-bottom: 24px;
+}
+
+.portal-tab-btn {
+  background: #12141D;
+  border: 1px solid #232738;
+  color: #9CA3AF;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.portal-tab-btn:hover, .portal-tab-btn.active {
+  background: #6366F1;
+  color: #FFFFFF;
+  border-color: #6366F1;
+}
+
+.xixify-tab-content {
+  display: none;
+}
+
+.xixify-tab-content.active {
+  display: block;
+}
+
+.xixify-empty-msg {
+  color: #9CA3AF;
+  text-align: center;
+  padding: 30px;
+}
+
+/* Card Grid Layout */
+.xixify-project-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.xixify-card {
+  background: #12141D;
+  border: 1px solid #232738;
+  border-radius: 10px;
+  padding: 20px;
+  transition: transform 0.2s ease;
+}
+
+.xixify-card:hover {
+  transform: translateY(-2px);
+  border-color: #2D334A;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.card-header h4 {
+  margin: 0;
+  font-size: 16px;
+  color: #FFFFFF;
+}
+
+.card-client, .card-milestone {
+  font-size: 13px;
+  color: #9CA3AF;
+  margin-bottom: 6px;
+}
+
+/* Progress Bar */
+.progress-container {
+  margin: 16px 0;
+}
+
+.progress-label {
+  font-size: 12px;
+  color: #9CA3AF;
+  margin-bottom: 6px;
+  font-weight: 500;
+}
+
+.progress-bar-bg {
+  background: #232738;
+  height: 8px;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  background: linear-gradient(90deg, #6366F1, #A855F7);
+  height: 100%;
+  border-radius: 4px;
+}
+
+/* Invoice Box */
+.invoice-box {
+  background: #0D0E15;
+  border: 1px solid #232738;
+  border-radius: 8px;
+  padding: 12px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  margin-top: 14px;
+}
+
+.invoice-item {
+  color: #9CA3AF;
+}
+
+.invoice-item span {
+  color: #F3F4F6;
+  font-weight: 600;
+}
+
+.invoice-item.due strong {
+  color: #F87171;
+}
+
+/* Form Styles */
+.xixify-form-card {
+  background: #12141D;
+  border: 1px solid #232738;
+  border-radius: 10px;
+  padding: 24px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.xixify-form-card h4 {
+  margin-top: 0;
+  font-size: 18px;
+  color: #FFF;
+}
+
+.xixify-form-card p {
+  color: #9CA3AF;
+  font-size: 13px;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 16px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: #9CA3AF;
+  margin-bottom: 6px;
+}
+
+.form-group input, .form-group textarea {
+  width: 100%;
+  box-sizing: border-box;
+  background: #090A0F;
+  border: 1px solid #232738;
+  border-radius: 6px;
+  padding: 10px 14px;
+  color: #F3F4F6;
+  font-size: 14px;
+  outline: none;
+}
+
+.form-group input:focus, .form-group textarea:focus {
+  border-color: #6366F1;
+}
+
+.btn-submit {
+  background: #6366F1;
+  color: #FFF;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.btn-submit:hover {
+  background: #4F46E5;
+}
+
+.xixify-badge {
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.badge-paid { background: rgba(16, 185, 129, 0.15); color: #34D399; }
+.badge-partial { background: rgba(245, 158, 11, 0.15); color: #FBBF24; }
+.badge-pending { background: rgba(239, 68, 68, 0.15); color: #F87171; }

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Xixify Tool Starter</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="xixify-tool-container">
+    <header class="tool-header">
+      <h1 id="tool-title">Xixify Web Tool</h1>
+      <p id="tool-description">A fast, lightweight interactive tool by Xixify.</p>
+    </header>
+
+    <main class="tool-card">
+      <div class="form-group">
+        <label for="user-input">Input Data:</label>
+        <textarea id="user-input" rows="4" placeholder="Type or paste text here..."></textarea>
+      </div>
+
+      <button id="action-btn" class="btn-primary">Process</button>
+
+      <div class="output-group hidden" id="output-section">
+        <h3>Result</h3>
+        <div id="result-display" class="result-box"></div>
+      </div>
+    </main>
+
+    <footer class="tool-footer">
+      <p>Powered by <a href="https://xixify.com" target="_blank" rel="noopener">Xixify Tools</a></p>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

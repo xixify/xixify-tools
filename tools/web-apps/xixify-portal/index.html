@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Xixify × DevPify | Financial & Client Portal</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <div class="app-container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-icon">X</div>
+        <div class="brand-text">Xixify Portal</div>
+      </div>
+
+      <ul class="nav-list">
+        <li class="nav-item active" data-view="dashboard">
+          <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path></svg>
+          Financial Overview
+        </li>
+        <li class="nav-item" data-view="projects">
+          <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg>
+          Projects & Dues
+        </li>
+        <li class="nav-item admin-only" data-view="partners">
+          <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+          Partner Split (50/50)
+        </li>
+      </ul>
+
+      <div class="sidebar-footer">
+        <button id="mode-toggle-btn" class="mode-toggle-btn">
+          👁️ View as Client
+        </button>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Top Bar -->
+      <header class="top-bar">
+        <div>
+          <h1 class="page-title">Partnership Dashboard</h1>
+          <p class="page-subtitle">Xixify × DevPify Accounts & Project Payment Tracker</p>
+        </div>
+
+        <button id="add-project-btn" class="btn-primary admin-only">
+          <span>+</span> Add Project
+        </button>
+      </header>
+
+      <!-- Client Banner (Only shown in Client View Mode) -->
+      <div class="client-banner" style="display:none;" id="client-banner">
+        <div>
+          <strong style="color:#818CF8;">Client Portal View</strong>
+          <p style="font-size:13px; color:#9CA3AF; margin-top:2px;">Showing project progress, tasks, and payment status.</p>
+        </div>
+      </div>
+
+      <!-- Financial Metrics Grid -->
+      <section class="metrics-grid">
+        <div class="metric-card">
+          <div class="metric-header">
+            <span class="metric-title">Gross Revenue</span>
+            <span class="metric-badge badge-purple">Total</span>
+          </div>
+          <div id="metric-gross" class="metric-value">৳ 0</div>
+        </div>
+
+        <div class="metric-card admin-only">
+          <div class="metric-header">
+            <span class="metric-title">Expenses</span>
+            <span class="metric-badge badge-orange">Deduction</span>
+          </div>
+          <div id="metric-expenses" class="metric-value">৳ 0</div>
+        </div>
+
+        <div class="metric-card admin-only">
+          <div class="metric-header">
+            <span class="metric-title">Net Profit</span>
+            <span class="metric-badge badge-green">Net</span>
+          </div>
+          <div id="metric-net" class="metric-value">৳ 0</div>
+        </div>
+
+        <div class="metric-card admin-only">
+          <div class="metric-header">
+            <span class="metric-title">Sumayah Share (50%)</span>
+            <span class="metric-badge badge-blue">Partner</span>
+          </div>
+          <div id="metric-sumayah" class="metric-value">৳ 0</div>
+        </div>
+
+        <div class="metric-card admin-only">
+          <div class="metric-header">
+            <span class="metric-title">Firoz Share (50%)</span>
+            <span class="metric-badge badge-blue">Partner</span>
+          </div>
+          <div id="metric-firoz" class="metric-value">৳ 0</div>
+        </div>
+
+        <div class="metric-card">
+          <div class="metric-header">
+            <span class="metric-title">Outstanding Dues</span>
+            <span class="metric-badge badge-orange">Pending</span>
+          </div>
+          <div id="metric-dues" class="metric-value">৳ 0</div>
+        </div>
+      </section>
+
+      <!-- Controls & Filters -->
+      <section class="controls-bar">
+        <input type="text" id="search-input" class="search-input" placeholder="Search project or client...">
+
+        <div class="filter-group">
+          <button class="filter-btn active" data-filter="all">All Projects</button>
+          <button class="filter-btn" data-filter="paid">Paid</button>
+          <button class="filter-btn" data-filter="partial">Partial</button>
+          <button class="filter-btn" data-filter="pending">Pending Dues</button>
+        </div>
+      </section>
+
+      <!-- Data Table -->
+      <section class="table-container">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Project Name</th>
+              <th>Client</th>
+              <th>Total Billed</th>
+              <th class="admin-only">Expenses</th>
+              <th class="admin-only">Net Profit</th>
+              <th class="admin-only">Partner Split (50/50)</th>
+              <th>Status</th>
+              <th>Due Amount</th>
+              <th class="admin-only">Actions</th>
+            </tr>
+          </thead>
+          <tbody id="projects-table-body">
+            <!-- Dynamic rows rendered by app.js -->
+          </tbody>
+        </table>
+      </section>
+    </main>
+  </div>
+
+  <!-- Add/Edit Project Modal -->
+  <div id="project-modal" class="modal-overlay hidden">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 class="modal-title">New Project Entry</h3>
+        <button id="modal-close" class="modal-close">&times;</button>
+      </div>
+
+      <form id="project-form">
+        <div class="modal-body">
+          <div class="form-group-full">
+            <label class="form-label" for="proj-name">Project Name</label>
+            <input type="text" id="proj-name" class="form-control" required placeholder="e.g. E-Commerce Development">
+          </div>
+
+          <div>
+            <label class="form-label" for="proj-client">Client / Source</label>
+            <input type="text" id="proj-client" class="form-control" required placeholder="e.g. Canopy, Fayaz">
+          </div>
+
+          <div>
+            <label class="form-label" for="proj-month">Month</label>
+            <select id="proj-month" class="form-control">
+              <option value="January">January</option>
+              <option value="February">February</option>
+              <option value="March">March</option>
+              <option value="April">April</option>
+              <option value="May">May</option>
+              <option value="June">June</option>
+              <option value="July">July</option>
+              <option value="August">August</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="form-label" for="proj-amount">Project Billed Amount (BDT)</label>
+            <input type="number" id="proj-amount" class="form-control" required placeholder="0">
+          </div>
+
+          <div>
+            <label class="form-label" for="proj-expenses">Project Expenses (BDT)</label>
+            <input type="number" id="proj-expenses" class="form-control" value="0">
+          </div>
+
+          <div>
+            <label class="form-label" for="proj-paid">Amount Paid So Far (BDT)</label>
+            <input type="number" id="proj-paid" class="form-control" value="0">
+          </div>
+
+          <div>
+            <label class="form-label" for="proj-status">Payment Status</label>
+            <select id="proj-status" class="form-control">
+              <option value="Paid">Paid</option>
+              <option value="Partial">Partial</option>
+              <option value="Pending">Pending</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" id="modal-cancel" class="btn-secondary">Cancel</button>
+          <button type="submit" class="btn-primary">Save Project</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
