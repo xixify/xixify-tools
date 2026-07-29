@@ -12,7 +12,6 @@ class Xixify_Partnership_Updater {
     private $file;
     private $plugin;
     private $basename;
-    private $active;
     private $username;
     private $repository;
     private $github_response;
@@ -30,7 +29,6 @@ class Xixify_Partnership_Updater {
     public function set_plugin_properties() {
         add_filter('site_transient_update_plugins', array($this, 'modify_transient'), 10, 1);
         add_filter('plugins_api', array($this, 'plugin_popup'), 10, 3);
-        add_filter('upgrader_post_install', array($this, 'after_install'), 10, 3);
     }
 
     private function get_repository_info() {
@@ -128,25 +126,6 @@ class Xixify_Partnership_Updater {
                 $plugin->download_link = !empty($download_link) ? $download_link : $this->github_response['zipball_url'];
 
                 return $plugin;
-            }
-        }
-        return $result;
-    }
-
-    public function after_install($response, $hook_extra, $result) {
-        global $wp_filesystem;
-
-        if (isset($hook_extra['plugin']) && $hook_extra['plugin'] === $this->plugin) {
-            $this->active = is_plugin_active($this->plugin);
-            $destination = WP_PLUGIN_DIR . '/' . $this->basename;
-
-            if ($result['destination'] !== $destination && $wp_filesystem->exists($result['destination'])) {
-                $wp_filesystem->move($result['destination'], $destination);
-                $result['destination'] = $destination;
-            }
-
-            if ($this->active) {
-                activate_plugin($this->plugin);
             }
         }
         return $result;
